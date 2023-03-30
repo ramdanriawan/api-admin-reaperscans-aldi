@@ -55,5 +55,3 @@ services:
 
   php:
     image: php:7.3.26-apache
-
-    ######
