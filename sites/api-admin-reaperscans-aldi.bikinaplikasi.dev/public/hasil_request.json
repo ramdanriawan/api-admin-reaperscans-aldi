@@ -1,0 +1,17 @@
+{
+    "id": "13",
+    "nama": "ini example nama",
+    "user_id": "105",
+    "alamat_lengkap": "ini alamat lengkap",
+    "latitude": "37.4219983",
+    "longitude": "-122.084",
+    "deskripsi": "ini deskripsi",
+    "jumlah_kamar": "5",
+    "gambar1": null,
+    "gambar3": null,
+    "gambar4": null,
+    "gambar5": null,
+    "harga_per_bulan": "100000",
+    "harga_per_tahun": "1000000",
+    "gambar2": "uploads\/f5339d64-1691-43ca-88e1-675f607db029.jpg"
+}

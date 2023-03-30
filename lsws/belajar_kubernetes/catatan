@@ -1,0 +1,5 @@
+kubectl port-forward helloweb-5bcfddd788-6pnd6 8081:8080
+kubectl port-forward helloweb-5bcfddd788-hfpb5 8082:8080
+kubectl port-forward helloweb-5bcfddd788-jsg99 8083:8080
+kubectl port-forward helloweb-5bcfddd788-lhh9p 8084:8080
+kubectl port-forward helloweb-5bcfddd788-t2xg7 8085:8080

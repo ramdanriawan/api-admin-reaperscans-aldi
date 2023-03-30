@@ -1,0 +1,59 @@
+vhroot /var/www/vhosts/bikinaplikasi.dev/
+setuidmode 2
+configfile $SERVER_ROOT/conf/vhosts/bikinaplikasi.dev/vhconf.conf
+enablescript 1
+allowsymbollink 1
+restrained 1
+
+virtualhostconfig  {
+    docroot /var/www/vhosts/$VH_NAME/public
+    enablegzip 1
+
+    index  {
+        autoindex 0
+        autoindexuri /_autoindex/default.php
+        useserver 0
+        indexfiles index.php
+    }
+
+    errorlog  {
+        useserver 1
+    }
+
+    accesscontrol  {
+        allow *
+    }
+
+    context / {
+        allowbrowse 1
+        location $DOC_ROOT/
+
+        rewrite  {
+            unknownkeywords rewritefile .htaccess
+            rules rewritefile .htaccess
+        }
+    }
+
+    accesslog $SERVER_ROOT/logs/$VH_NAME.access.log {
+        rollingsize 100M
+        useserver 0
+        keepdays 7
+        compressarchive 1
+    }
+
+    rewrite  {
+        autoloadhtaccess 1
+        loglevel 0
+        enable 1
+    }
+
+    vhssl  {
+        keyfile /root/.acme.sh/certs/$VH_NAME/$VH_NAME.key
+        certfile /root/.acme.sh/certs/$VH_NAME/fullchain.cer
+        certchain 1
+    }
+
+    expires  {
+        enableexpires 1
+    }
+}

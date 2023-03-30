@@ -1,0 +1,15 @@
+{
+    "nama": "kos 4 admin",
+    "pemilik": "admin",
+    "alamat_lengkap": "jl. h. ibrahim rt 19 no 94 kel. rawasari kec. kota baru kota jambi",
+    "alamat_gmaps": "jambi",
+    "deskripsi": "deskripsi",
+    "no_hp": "082282692489",
+    "jumlah_kamar": "10",
+    "fasilitas": "fasilitas",
+    "kategori": "Perempuan",
+    "harga_terendah": "100000",
+    "harga_tertinggi": "200000",
+    "user_id": "1",
+    "kamar_kosong": "10"
+}

@@ -1,0 +1,57 @@
+version: '3'
+services:
+  mariadb:
+    image: mariadb:10.5.9
+    volumes:
+      - "./data/db:/var/lib/mysql"
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - 81:80
+      - 444:443
+    restart: always
+    environment:
+      - PMA_ARBITRARY=1
+      - UPLOAD_LIMIT=300M
+
+  composer:
+    image: composer
+    volumes:
+    - ./sites:/app
+    - ./lsws/bash:/home
+    entrypoint: /bin/sh /home/composer-install.bash
+    depends_on:
+      - mariadb
+      - phpmyadmin
+
+  litespeed:
+    image: litespeedtech/openlitespeed:${OLS_VERSION}-${PHP_VERSION}
+    env_file:
+      - .env
+    volumes:
+      - ./lsws/conf:/usr/local/lsws/conf
+      - ./lsws/admin-conf:/usr/local/lsws/admin/conf
+      - ./lsws/bin/container:/usr/local/bin
+      - ./sites:/var/www/vhosts/
+      - ./logs:/usr/local/lsws/logs/
+      - ./lsws/bash:/home
+    ports:
+      - 80:80
+      - 443:443
+      - 443:443/udp
+      - 7080:7080
+    restart: always
+    environment:
+      TZ: ${TimeZone}
+    depends_on:
+      - composer
+    command: /bin/sh /home/phpini.bash
+
+  php:
+    image: php:7.3.26-apache

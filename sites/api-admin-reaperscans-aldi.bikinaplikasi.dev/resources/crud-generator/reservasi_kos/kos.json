@@ -1,0 +1,119 @@
+{
+    "fields": [
+        {
+            "name": "pemilik",
+            "type": "string"
+        },
+        {
+            "name": "alamat_lengkap",
+            "type": "text"
+        },
+        {
+            "name": "alamat_gmaps",
+            "type": "text"
+        },
+        {
+            "name": "deskripsi",
+            "type": "text"
+        },
+        {
+            "name": "no_hp",
+            "type": "string"
+        },
+        {
+            "name": "jumlah_kamar",
+            "type": "string"
+        },
+        {
+            "name": "fasilitas",
+            "type": "string"
+        },
+        {
+            "name": "gambar",
+            "type": "file"
+        },
+        {
+            "name": "kategori",
+            "type": "select",
+            "options": {
+                "Laki - Laki": "Laki - Laki",
+                "Perempuan": "Perempuan",
+                "Laki - Laki / Perempuan": "Laki - Laki / Perempuan"
+            }
+        },
+        {
+            "name": "harga_terendah",
+            "type": "number"
+        },
+        {
+            "name": "harga_tertinggi",
+            "type": "number"
+        },
+        {
+            "name": "harga_sewa_tahunan",
+            "type": "number"
+        }
+    ],
+    "foreign_keys": [
+    ],
+    "relationships": [
+    ],
+    "validations": [
+        {
+            "field": "pemilik",
+            "rules": "required|max:30"
+        },
+        {
+            "field": "alamat_lengkap",
+            "rules": "required|max:255"
+        },
+        {
+            "field": "alamat_gmaps",
+            "rules": "required|max:255"
+        },
+        {
+            "field": "deskripsi",
+            "rules": "required|max:255"
+        },
+        {
+            "field": "no_hp",
+            "rules": "required|max:15"
+        },
+        {
+            "field": "jumlah_kamar",
+            "rules": "required|max:2"
+        },
+        {
+            "field": "pemilik",
+            "rules": "required|max:99"
+        },
+        {
+            "field": "fasilitas",
+            "rules": "required|max:255"
+        },
+        {
+            "field": "gambar",
+            "rules": "required"
+        },
+        {
+            "field": "kategori",
+            "rules": "required|in:Laki - Laki,Perempuan,Laki - Laki / Perempuan"
+        },
+        {
+            "field": "harga_terendah",
+            "rules": "required|max:10000000"
+        },
+        {
+            "field": "harga_tertinggi",
+            "rules": "required|max:10000000"
+        },
+        {
+            "field": "harga_tertinggi",
+            "rules": "required|max:10000000"
+        },
+        {
+            "field": "harga_sewa_tahunan",
+            "rules": "required|max:10000000"
+        }
+    ]
+}

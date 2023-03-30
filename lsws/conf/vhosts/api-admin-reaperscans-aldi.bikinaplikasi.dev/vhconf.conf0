@@ -1,0 +1,9 @@
+docRoot                   $SERVER_ROOT/$VH_NAME/html/public
+vhDomain                  $VH_NAME
+vhAliases                 www.$VH_NAME
+enableGzip                1
+
+index  {
+  useServer               0
+  indexFiles              index.php
+}

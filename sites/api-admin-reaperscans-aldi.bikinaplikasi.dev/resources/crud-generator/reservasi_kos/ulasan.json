@@ -1,0 +1,46 @@
+{
+    "fields": [
+        {
+            "name": "user_id",
+            "type": "select",
+            "options": {
+                "key": "value"
+            }
+        },
+        {
+            "name": "rumah_id",
+            "type": "select",
+            "options": {
+                "key": "value"
+            }
+        },
+        {
+            "name": "komentar",
+            "type": "text"
+        },
+        {
+            "name": "disukai",
+            "type": "select",
+            "options": {
+                "Ya": "Ya",
+                "Tidak": "Tidak"
+            }
+        }
+    ],
+    "foreign_keys": [
+    ],
+    "relationships": [
+        {
+            "name": "user",
+            "type": "belongsTo",
+            "class": "App\\Models\\User"
+        },
+        {
+            "name": "rumah",
+            "type": "belongsTo",
+            "class": "App\\Models\\Rumah"
+        }
+    ],
+    "validations": [
+    ]
+}

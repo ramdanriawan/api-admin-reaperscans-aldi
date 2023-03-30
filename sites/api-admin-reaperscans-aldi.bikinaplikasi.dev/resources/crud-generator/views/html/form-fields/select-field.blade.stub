@@ -1,0 +1,15 @@
+
+    <div class="col-md-12">
+
+        <select name="%%itemName%%" class="form-control form-control-line" id="%%itemName%%" %%required%%>
+            @foreach (json_decode('%%options%%', true) as $optionKey => $optionValue)
+                <option value="{{ $optionKey }}" {{ (isset($%%crudNameSingular%%->%%itemName%%) && $%%crudNameSingular%%->%%itemName%% == $optionKey) || old('%%itemName%%') == $optionKey ? 'selected' : ''}}>{{ $optionValue }}</option>
+            @endforeach
+        </select>
+
+        @error('%%itemName%%')
+        <span class="invalid-feedback text-danger" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="kodebox.id" id="7aafae22-7839-42aa-bc01-b590d3162f31" port="22" customName="tiktok clone" nameFormat="CUSTOM" username="kodeboxi">
+        <option name="customName" value="tiktok clone" />
+      </sshConfig>
+      <sshConfig authType="PASSWORD" host="103.56.148.212" id="a39b05e9-e530-4cf9-baf4-7dd451c3f480" port="22" customName="project lms moodle projects.co.id" nameFormat="CUSTOM" username="root">
+        <option name="customName" value="project lms moodle projects.co.id" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

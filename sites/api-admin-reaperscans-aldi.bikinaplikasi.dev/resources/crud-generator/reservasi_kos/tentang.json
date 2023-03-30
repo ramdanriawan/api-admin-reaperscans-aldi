@@ -1,0 +1,50 @@
+{
+    "fields": [
+        {
+            "name": "nama_developer",
+            "type": "string"
+        },
+        {
+            "name": "deskripsi",
+            "type": "text"
+        },
+        {
+            "name": "versi",
+            "type": "integer"
+        },
+        {
+            "name": "email",
+            "type": "email"
+        },
+        {
+            "name": "no_hp",
+            "type": "string"
+        }
+    ],
+    "foreign_keys": [
+    ],
+    "relationships": [
+    ],
+    "validations": [
+        {
+            "field": "nama_developer",
+            "rules": "required|max:30"
+        },
+        {
+            "field": "deskripsi",
+            "rules": "required|max:255"
+        },
+        {
+            "field": "versi",
+            "rules": "required|max:10"
+        },
+        {
+            "field": "email",
+            "rules": "required|max:50|email"
+        },
+        {
+            "field": "no_hp",
+            "rules": "required|max:15"
+        }
+    ]
+}

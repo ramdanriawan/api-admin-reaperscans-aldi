@@ -1,0 +1,15 @@
+@extends('layouts.app')
+@section('content')
+<table class="table" id='dataTable'>
+    <thead>
+        <tr>
+            %%formHeadingHtml%%
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-id='{{ $%%crudName%%->%%primaryKey%% }}'>
+            %%formBodyHtml%%
+        </tr>
+    </tbody>
+</table>
+@endsection

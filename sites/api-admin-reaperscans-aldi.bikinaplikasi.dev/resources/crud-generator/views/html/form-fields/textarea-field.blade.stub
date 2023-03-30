@@ -1,0 +1,8 @@
+
+    <textarea class="form-control" rows="5" name="%%itemName%%" type="%%fieldType%%" id="%%itemName%%" placeholder="%%itemName%%" %%required%%>{{ isset($%%crudNameSingular%%->%%itemName%%) ? $%%crudNameSingular%%->%%itemName%% : old('%%itemName%%')}}</textarea>
+    
+    @error('%%itemName%%')
+    <span class="invalid-feedback text-danger" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror

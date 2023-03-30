@@ -1,0 +1,35 @@
+// ubah setupan env
+
+// hapus model, controller, view yang tidak terpakai
+
+// jalankan dulu 2 ini untuk semua table
+php artisan crud:generate Tentang --fields_from_file="resources\crud-generator\reservasi_rumah\tentang.json" --controller-namespace=App\Http\Controllers --form-helper=html --model-namespace=App\Models
+
+php artisan migrate --path=database/migrations/2021_11_13_102149_create_tentangs_table.php // untuk migrasi table rumah
+
+// baru ini satu satu
+php artisan dashboard:make rumah,tentang,disukai,user // membuat dashboard khusus user dan anggota
+
+php artisan chart:make user,anggota // membuat chart khusus user dan anggota
+
+php artisan sidebar:make session #membuat sidebar kecuali table session
+
+php artisan laporan:make session #membuat laporan kecuali table session
+
+php artisan formlaporan:make pengeluaran // membuat form laporan khusus untuk table pengeluaran (satu satu)
+
+php artisan printlaporan:make pesanan id // membuat halaman tampilkan laporan pesanan kecuali kolom id (satu satu)
+
+// ubah nama table di model, sesuaikan besar kecilnya juga
+
+// cek dan benerin controllernya, nama class model, text, new class, parameter class
+
+// ganti file store dengan move pakai uuid_create(UUID_TYPE_DEFAULT) . "." . $request->file('gambar')->getClientOriginalExtension() untuk namanya
+
+// benerin string di controllernya
+
+// benerin route di route web
+
+// jalankan composer dump-autoload
+
+// gambar itu di bagian update tidak required

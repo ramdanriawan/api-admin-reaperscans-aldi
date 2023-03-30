@@ -1,0 +1,165 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyRootNamespaceHttp\Requests;
+use DummyRootNamespaceHttp\Controllers\Controller;
+
+use DummyRootNamespace{{modelNamespace}}{{modelName}};
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
+class DummyClass extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(Request $request)
+    {
+        $data['{{crudName}}'] = {{modelName}}::paginate(1000);
+
+        $data['{{crudName}}_count'] = count(Schema::getColumnListing('{{crudName}}'));
+
+        return view('{{crudName}}.index', $data);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('{{viewName}}.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function store(Request $request)
+    {
+        {{validationRules}}
+        $requestData = $request->all();
+
+        {{fileSnippet}}
+
+        {{modelName}}::create($requestData);
+
+        return redirect()->route('{{viewName}}.index')->with('success', 'Berhasil menambah {{modelName}}');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\View\View
+     */
+    public function show({{modelName}} ${{viewName}})
+    {
+        $data["item"] = ${{viewName}};
+        $data["{{viewName}}"] = ${{viewName}};
+
+        return view('{{viewName}}.show', $data);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit({{modelName}} ${{viewName}})
+    {
+        $data["{{viewName}}"] = ${{viewName}};
+        $data[strtolower("{{modelName}}")] = ${{viewName}};
+
+        return view('{{viewName}}.edit', $data);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update(Request $request, {{modelName}} ${{viewName}})
+    {
+        {{validationRules}}
+
+        $requestData = $request->all();
+
+        {{fileSnippet}}
+
+        ${{viewName}}->update($requestData);
+
+        return redirect()->route('{{viewName}}.index')->with('success', 'Berhasil mengubah {{modelName}}');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy({{modelName}} ${{viewName}})
+    {
+        ${{viewName}}->delete();
+
+        return redirect()->route('{{viewName}}.index')->with('success', '{{modelName}} berhasil dihapus!');
+    }
+
+    public function hapus_semua(Request $request)
+    {
+        ${{viewName}}s = {{modelName}}::whereIn('id', json_decode($request->ids, true))->get();
+
+        {{modelName}}::whereIn('id', ${{viewName}}s->pluck('id'))->delete();
+
+        return back()->with('success', 'Berhasil menghapus banyak data {{viewName}}');
+    }
+
+    public function laporan()
+    {
+
+        return view('{{viewName}}.laporan.index');
+    }
+
+    public function print(Request $request)
+    {
+        $table = (new {{modelName}})->getTable();
+        $object = (new {{modelName}});
+
+        $fields = [];
+        foreach(DB::select("DESC $table") as $tableField)
+        {
+            $fields[] = $tableField->Field;
+        }
+
+        $this->validate($request, [
+            'field' => 'required|in:' . implode(',', $fields),
+            'order' => 'required|in:ASC,DESC',
+            'limit' => 'required|integer|max:' . $object->get()->count(),
+        ]);
+
+        $data["{{viewName}}s"] = $object->orderBy($request->field, $request->order)->limit($request->limit)->get();
+
+        if(!$data["{{viewName}}s"]->count()) {
+            
+            return back()->with('error', 'Data tidak ada!');
+        }
+
+        return view("{{viewName}}.laporan.print", $data);
+    }
+}

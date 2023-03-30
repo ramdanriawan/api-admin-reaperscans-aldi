@@ -1,0 +1,9 @@
+<div class="col-md-12">
+    <input placeholder="%%itemName%%" class="form-control form-control-line @error('%%itemName%%') is-invalid @enderror" name="%%itemName%%" type="%%fieldType%%" id="%%itemName%%" value="{{ isset($%%crudNameSingular%%->%%itemName%%) ? $%%crudNameSingular%%->%%itemName%% : old('%%itemName%%') }}" %%required%%>
+    
+    @error('%%itemName%%')
+    <span class="invalid-feedback text-danger" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+</div>

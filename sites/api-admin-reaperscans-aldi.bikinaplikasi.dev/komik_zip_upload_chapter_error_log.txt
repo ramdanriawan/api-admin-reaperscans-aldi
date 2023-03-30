@@ -1,0 +1,1 @@
+file_put_contents(gambar/58013252.png): failed to open stream: No such file or directory

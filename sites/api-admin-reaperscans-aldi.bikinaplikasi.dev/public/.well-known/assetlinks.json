@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.example.faithaction",
+            "sha256_cert_fingerprints": [
+                "8B:4A:7A:49:0A:4A:AF:E4:01:F4:75:A0:59:9E:3A:49:97:D3:B6:9D:36:03:B1:27:5D:3C:8D:D5:71:94:CB:68"
+            ]
+        }
+    }
+]

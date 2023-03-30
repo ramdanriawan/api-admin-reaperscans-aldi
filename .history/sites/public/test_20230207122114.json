@@ -1,0 +1,77 @@
+{
+    "success": true,
+    "message": "Successfully generate transaction",
+    "data": {
+        "reference": "T30104320374UAUER",
+        "merchant_ref": "INV-000000001",
+        "payment_selection_type": "static",
+        "payment_method": "BRIVA",
+        "payment_name": "BRI Virtual Account",
+        "customer_name": "Admin",
+        "customer_email": "admin@gmail.com",
+        "customer_phone": "082282692480",
+        "callback_url": "https:\/\/api-admin-archillery-revi.com\/admin\/tripay\/callback",
+        "return_url": "http:\/\/192.168.43.205:1000\/giving\/redirect",
+        "amount": 10000,
+        "fee_merchant": 4250,
+        "fee_customer": 0,
+        "total_fee": 4250,
+        "amount_received": 5750,
+        "pay_code": "578893001012298",
+        "pay_url": null,
+        "checkout_url": "https:\/\/tripay.co.id\/checkout\/T30104320374UAUER",
+        "status": "UNPAID",
+        "expired_time": 1664972139,
+        "order_items": [
+            {
+                "sku": null,
+                "name": "Persembahan Perspuluhan",
+                "price": 10000,
+                "quantity": 1,
+                "subtotal": 10000,
+                "product_url": null,
+                "image_url": null
+            }
+        ],
+        "instructions": [
+            {
+                "title": "Internet Banking",
+                "steps": [
+                    "Login ke internet banking Bank BRI Anda",
+                    "Pilih menu Pembayaran<\/b> lalu klik menu BRIVA<\/b>",
+                    "Pilih rekening sumber dan masukkan Kode Bayar (578893001012298<\/b>) lalu klik Kirim<\/b>",
+                    "Detail transaksi akan ditampilkan, pastikan data sudah sesuai",
+                    "Klik Lanjutkan<\/b>",
+                    "Masukkan kata sandi ibanking lalu klik Request<\/b> untuk mengirim m-PIN ke nomor HP Anda",
+                    "Periksa HP Anda dan masukkan m-PIN yang diterima lalu klik Kirim<\/b>",
+                    "Transaksi sukses, simpan bukti transaksi Anda"
+                ]
+            },
+            {
+                "title": "Aplikasi BRImo",
+                "steps": [
+                    "Login ke aplikasi BRImo Anda",
+                    "Pilih menu BRIVA<\/b>",
+                    "Pilih sumber dana dan masukkan Nomor Pembayaran (578893001012298<\/b>) lalu klik Lanjut<\/b>",
+                    "Klik Lanjut<\/b>",
+                    "Detail transaksi akan ditampilkan, pastikan data sudah sesuai",
+                    "Klik Lanjutkan<\/b>",
+                    "Klik Konfirmasi<\/b>",
+                    "Klik Lanjut<\/b>",
+                    "Masukkan kata sandi ibanking Anda",
+                    "Klik Lanjut<\/b>",
+                    "Transaksi sukses, simpan bukti transaksi Anda"
+                ]
+            },
+            {
+                "title": "ATM BRI",
+                "steps": [
+                    "Lakukan pembayaran melalui ATM Bank BRI",
+                    "Pilih menu Transaksi Lain > Pembayaran > Lainnya > Pilih BRIVA<\/b>",
+                    "Masukkan Nomor VA (578893001012298<\/b>)",
+                    "Pilih Ya<\/b> untuk memproses pembayaran"
+                ]
+            }
+        ]
+    }
+}

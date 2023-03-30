@@ -1,0 +1,1 @@
+php artisan serv --port=1000 --host=localhost
