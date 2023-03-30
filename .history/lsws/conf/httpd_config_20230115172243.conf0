@@ -477,13 +477,6 @@ vhTemplate docker {
 	vhDomain              api-admin-shinigami-aldi.bikinaplikasi.dev
   }
 
-  member 	pemesanan-badminton-rajum.bikinaplikasi.dev {
-	vhDomain              pemesanan-badminton-rajum.bikinaplikasi.dev
-  }
-
-  member www.bikinaplikasi.dev {
-	vhDomain              www.bikinaplikasi.dev
-  }
 
   member localhost {
     vhDomain              localhost, *
