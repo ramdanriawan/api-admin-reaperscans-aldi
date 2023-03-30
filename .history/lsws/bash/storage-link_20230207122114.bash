@@ -1,1 +1,0 @@
-#php /var/www/vhosts/forum-diskusi-maruli.api-admin-archillery-revi.com/artisan storage:link

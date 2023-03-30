@@ -1,1 +1,0 @@
-#php /var/www/vhosts/forum-diskusi-maruli.bikinaplikasi.dev/artisan storage:link
