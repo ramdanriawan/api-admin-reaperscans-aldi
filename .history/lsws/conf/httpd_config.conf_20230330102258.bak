@@ -26,7 +26,7 @@ accesslog logs/access.log {
   keepDays                30
   compressArchive         0
 }
-indexFiles                index.php
+indexFiles                index.html, index.php
 
 expires  {
   enableExpires           1
@@ -206,21 +206,20 @@ privateExpireInSeconds 3600
 }
 
 virtualhost Example {
-  vhRoot                  $VH_NAME/
-  configFile              conf/vhosts/$VH_NAME/vhconf.conf
+  vhRoot                  Example/
+  configFile              conf/vhosts/Example/vhconf.conf
   allowSymbolLink         1
   enableScript            1
   restrained              1
   setUIDMode              0
 }
 
-virtualhost api-admin-shinigami-aldi.bikinaplikasi.dev {
-  vhRoot                  $VH_NAME/
-  configFile              conf/vhosts/$VH_NAME/vhconf.conf
+virtualhost api-admin-shinigami-aldi.com {
+  vhRoot                  api-admin-shinigami-aldi.com/
+  configFile              $SERVER_ROOT/conf/vhosts/$VH_NAME/vhconf.conf
   allowSymbolLink         1
   enableScript            1
   restrained              1
-  setUIDMode              0
 }
 
 listener Default {
@@ -232,7 +231,6 @@ listener Default {
 listener HTTP {
   address                 *:80
   secure                  0
-  map                     bikinaplikasi.dev *
 }
 
 listener HTTPS {
@@ -240,7 +238,6 @@ listener HTTPS {
   secure                  1
   keyFile                 /usr/local/lsws/admin/conf/webadmin.key
   certFile                /usr/local/lsws/admin/conf/webadmin.crt
-  map                     bikinaplikasi.dev *
 }
 
 vhTemplate centralConfigLog {
@@ -256,16 +253,11 @@ vhTemplate EasyRailsWithSuEXEC {
 vhTemplate docker {
   templateFile            conf/templates/docker.conf
   listeners               HTTP, HTTPS
-
-  member api-admin-shinigami-aldi.bikinaplikasi.dev {
-	vhDomain              api-admin-shinigami-aldi.bikinaplikasi.dev
-  }
-
-  member www.api-admin-shinigami-aldi.bikinaplikasi.dev {
-	vhDomain              www.api-admin-shinigami-aldi.bikinaplikasi.dev
-  }
+  note                    docker
 
   member localhost {
     vhDomain              localhost, *
   }
 }
+
+

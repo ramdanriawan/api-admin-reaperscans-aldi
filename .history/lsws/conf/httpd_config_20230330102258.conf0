@@ -214,7 +214,7 @@ virtualhost Example {
   setUIDMode              0
 }
 
-virtualhost api-admin-shinigami-aldi.bikinaplikasi.dev {
+virtualhost api-admin-shinigami-aldi.com {
   vhRoot                  $VH_NAME/
   configFile              conf/vhosts/$VH_NAME/vhconf.conf
   allowSymbolLink         1
@@ -232,7 +232,7 @@ listener Default {
 listener HTTP {
   address                 *:80
   secure                  0
-  map                     bikinaplikasi.dev *
+  map                     api-admin-shinigami-aldi.com *
 }
 
 listener HTTPS {
@@ -240,7 +240,7 @@ listener HTTPS {
   secure                  1
   keyFile                 /usr/local/lsws/admin/conf/webadmin.key
   certFile                /usr/local/lsws/admin/conf/webadmin.crt
-  map                     bikinaplikasi.dev *
+  map                     api-admin-shinigami-aldi.com *
 }
 
 vhTemplate centralConfigLog {
@@ -257,12 +257,12 @@ vhTemplate docker {
   templateFile            conf/templates/docker.conf
   listeners               HTTP, HTTPS
 
-  member api-admin-shinigami-aldi.bikinaplikasi.dev {
-	vhDomain              api-admin-shinigami-aldi.bikinaplikasi.dev
+  member api-admin-shinigami-aldi.com {
+	vhDomain              api-admin-shinigami-aldi.com
   }
 
-  member www.api-admin-shinigami-aldi.bikinaplikasi.dev {
-	vhDomain              www.api-admin-shinigami-aldi.bikinaplikasi.dev
+  member www.api-admin-shinigami-aldi.com {
+	vhDomain              www.api-admin-shinigami-aldi.com
   }
 
   member localhost {

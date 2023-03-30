@@ -1,6 +1,6 @@
-vhroot /var/www/vhosts/api-admin-shinigami-aldi.bikinaplikasi.dev/
+vhroot /var/www/vhosts/api-admin-shinigami-aldi.com/
 setuidmode 2
-configfile $SERVER_ROOT/conf/vhosts/api-admin-shinigami-aldi.bikinaplikasi.dev/vhconf.conf
+configfile $SERVER_ROOT/conf/vhosts/api-admin-shinigami-aldi.com/vhconf.conf
 enablescript 1
 allowsymbollink 1
 restrained 1
