@@ -1,0 +1,499 @@
+servername 
+user nobody
+group nogroup
+priority 0
+inmembufsize 60M
+swappingdir /tmp/lshttpd/swap
+autofix503 1
+gracefulrestarttimeout 300
+mime conf/mime.properties
+showversionnumber 0
+adminemails root@localhost
+indexfiles index.php
+
+errorlog logs/error.log {
+    loglevel DEBUG
+    debuglevel 0
+    rollingsize 10M
+    enablestderrlog 1
+}
+
+accesslog logs/access.log {
+    rollingsize 10M
+    keepdays 30
+    compressarchive 0
+}
+
+expires  {
+    enableexpires 1
+    expiresbytype image/*=A604800,text/css=A604800,application/x-javascript=A604800,application/javascript=A604800,font/*=A604800,application/x-font-ttf=A604800
+}
+
+tuning  {
+    maxconnections 10000
+    maxsslconnections 10000
+    conntimeout 300
+    maxkeepalivereq 10000
+    keepalivetimeout 5
+    sndbufsize 0
+    rcvbufsize 0
+    maxrequrllen 32768
+    maxreqheadersize 65536
+    maxreqbodysize 2047M
+    maxdynrespheadersize 32768
+    maxdynrespsize 2047M
+    maxcachedfilesize 4096
+    totalinmemcachesize 20M
+    maxmmapfilesize 256K
+    totalmmapcachesize 40M
+    usesendfile 1
+    fileetag 28
+    enablegzipcompress 1
+    compressibletypes default
+    enabledyngzipcompress 1
+    gzipcompresslevel 6
+    gzipautoupdatestatic 1
+    gzipstaticcompresslevel 6
+    brstaticcompresslevel 6
+    gzipmaxfilesize 10M
+    gzipminfilesize 300
+    quicenable 1
+    quicshmdir /dev/shm
+}
+
+fileaccesscontrol  {
+    followsymbollink 1
+    checksymbollink 0
+    requiredpermissionmask 000
+    restrictedpermissionmask 000
+}
+
+perclientconnlimit  {
+    staticreqpersec 0
+    dynreqpersec 0
+    outbandwidth 0
+    inbandwidth 0
+    softlimit 10000
+    hardlimit 10000
+    graceperiod 15
+    banperiod 300
+}
+
+cgirlimit  {
+    maxcgiinstances 20
+    minuid 11
+    mingid 10
+    priority 0
+    cpusoftlimit 10
+    cpuhardlimit 50
+    memsoftlimit 1460M
+    memhardlimit 1470M
+    procsoftlimit 400
+    prochardlimit 450
+}
+
+accessdenydir  {
+    dir /
+    dir /etc/*
+    dir /dev/*
+    dir conf/*
+    dir admin/conf/*
+}
+
+accesscontrol  {
+    allow ALL
+}
+
+extprocessor lsphp {
+    type lsapi
+    address uds://tmp/lshttpd/lsphp.sock
+    maxconns 10
+    env PHP_LSAPI_CHILDREN=10
+    env LSAPI_AVOID_FORK=200M
+    inittimeout 60
+    retrytimeout 0
+    persistconn 1
+    respbuffer 0
+    autostart 1
+    path fcgi-bin/lsphp
+    backlog 100
+    instances 1
+    priority 0
+    memsoftlimit 2047M
+    memhardlimit 2047M
+    procsoftlimit 1400
+    prochardlimit 1500
+}
+
+scripthandler  {
+    add lsapi:lsphp php
+}
+
+railsdefaults  {
+    maxconns 1
+    env LSAPI_MAX_IDLE=60
+    inittimeout 60
+    retrytimeout 0
+    pckeepalivetimeout 60
+    respbuffer 0
+    backlog 50
+    runonstartup 3
+    extmaxidletime 300
+    priority 3
+    memsoftlimit 2047M
+    memhardlimit 2047M
+    procsoftlimit 500
+    prochardlimit 600
+}
+
+wsgiDefaults  {
+    maxconns 5
+    env LSAPI_MAX_IDLE=60
+    inittimeout 60
+    retrytimeout 0
+    pckeepalivetimeout 60
+    respbuffer 0
+    backlog 50
+    runonstartup 3
+    extmaxidletime 300
+    priority 3
+    memsoftlimit 2047M
+    memhardlimit 2047M
+    procsoftlimit 500
+    prochardlimit 600
+}
+
+nodeDefaults  {
+    maxconns 5
+    env LSAPI_MAX_IDLE=60
+    inittimeout 60
+    retrytimeout 0
+    pckeepalivetimeout 60
+    respbuffer 0
+    backlog 50
+    runonstartup 3
+    extmaxidletime 300
+    priority 3
+    memsoftlimit 2047M
+    memhardlimit 2047M
+    procsoftlimit 500
+    prochardlimit 600
+}
+
+module cache {
+    param <<<MY_END
+checkprivatecache 1
+checkpubliccache 1
+maxcacheobjsize 10000000
+maxstaleage 200
+qscache 1
+reqcookiecache 1
+respcookiecache 1
+ignorereqcachectrl 1
+ignorerespcachectrl 0
+enablecache 0
+expireinseconds 3600
+enableprivatecache 0
+privateexpireinseconds 3600
+    MY_END
+    internal 1
+    unknownkeywords checkprivatecache 1
+    unknownkeywords checkpubliccache 1
+    unknownkeywords maxcacheobjsize 10000000
+    unknownkeywords maxstaleage 200
+    unknownkeywords qscache 1
+    unknownkeywords reqcookiecache 1
+    unknownkeywords respcookiecache 1
+    unknownkeywords ignorereqcachectrl 1
+    unknownkeywords ignorerespcachectrl 0
+    unknownkeywords enablecache 0
+    unknownkeywords expireinseconds 3600
+    unknownkeywords enableprivatecache 0
+    unknownkeywords privateexpireinseconds 3600
+    ls_enabled 1
+}
+
+virtualhost Example {
+    vhroot $VH_NAME/
+    configfile conf/vhosts/$VH_NAME/vhconf.conf
+    allowsymbollink 1
+    enablescript 1
+    restrained 1
+    setuidmode 0
+}
+
+virtualhost api-admin-archillery-revi.com {
+    vhroot $VH_NAME/
+    configfile conf/vhosts/$VH_NAME/vhconf.conf
+    allowsymbollink 1
+    enablescript 1
+    restrained 1
+    setuidmode 0
+}
+
+listener Default {
+    address *:8088
+    secure 0
+    map Example *
+}
+
+listener HTTP {
+    address *:80
+    secure 0
+    map api-admin-archillery-revi.com *
+}
+
+listener HTTPS {
+    address *:443
+    secure 1
+    keyfile /usr/local/lsws/admin/conf/webadmin.key
+    certfile /usr/local/lsws/admin/conf/webadmin.crt
+    map api-admin-archillery-revi.com *
+}
+
+vhtemplate centralConfigLog {
+    templatefile conf/templates/ccl.conf
+    listeners Default
+}
+
+vhtemplate EasyRailsWithSuEXEC {
+    templatefile conf/templates/rails.conf
+    listeners Default
+}
+
+vhtemplate docker {
+    templatefile conf/templates/docker.conf
+    listeners HTTP, HTTPS
+
+    member api-admin-archillery-revi.com {
+        vhdomain api-admin-archillery-revi.com
+    }
+
+    member akademik-agoy.api-admin-archillery-revi.com {
+        vhdomain akademik-agoy.api-admin-archillery-revi.com
+    }
+
+    member api-admin-rumah-kevin.api-admin-archillery-revi.com {
+        vhdomain api-admin-rumah-kevin.api-admin-archillery-revi.com
+    }
+
+    member api-antrian-guse.api-admin-archillery-revi.com {
+        vhdomain api-antrian-guse.api-admin-archillery-revi.com
+    }
+
+    member api-pendataan-afandi.api-admin-archillery-revi.com {
+        vhdomain api-pendataan-afandi.api-admin-archillery-revi.com
+    }
+
+    member api-pendataan-ranya.api-admin-archillery-revi.com {
+        vhdomain api-pendataan-ranya.api-admin-archillery-revi.com
+    }
+
+    member e-canteen-fadilatul.api-admin-archillery-revi.com {
+        vhdomain e-canteen-fadilatul.api-admin-archillery-revi.com
+    }
+
+    member e-learning-rindi.api-admin-archillery-revi.com {
+        vhdomain e-learning-rindi.api-admin-archillery-revi.com
+    }
+
+    member forum-diskusi-maruli.api-admin-archillery-revi.com {
+        vhdomain forum-diskusi-maruli.api-admin-archillery-revi.com
+    }
+
+    member inventaris-fathiyah.api-admin-archillery-revi.com {
+        vhdomain inventaris-fathiyah.api-admin-archillery-revi.com
+    }
+
+    member klinik-akbar.api-admin-archillery-revi.com {
+        vhdomain klinik-akbar.api-admin-archillery-revi.com
+    }
+
+    member klinik-ardana.api-admin-archillery-revi.com {
+        vhdomain klinik-ardana.api-admin-archillery-revi.com
+    }
+
+    member klinik-nando.api-admin-archillery-revi.com {
+        vhdomain klinik-nando.api-admin-archillery-revi.com
+    }
+
+    member panti-fadilatul.api-admin-archillery-revi.com {
+        vhdomain panti-fadilatul.api-admin-archillery-revi.com
+    }
+
+    member pendaftaran-pasien-andri.api-admin-archillery-revi.com {
+        vhdomain pendaftaran-pasien-andri.api-admin-archillery-revi.com
+    }
+
+    member penjualan-kue-zaky.api-admin-archillery-revi.com {
+        vhdomain penjualan-kue-zaky.api-admin-archillery-revi.com
+    }
+
+    member penjualan-tanah-andini.api-admin-archillery-revi.com {
+        vhdomain penjualan-tanah-andini.api-admin-archillery-revi.com
+    }
+
+    member perpustakaan-andri.api-admin-archillery-revi.com {
+        vhdomain perpustakaan-andri.api-admin-archillery-revi.com
+    }
+
+    member perpustakaan-febilina.api-admin-archillery-revi.com {
+        vhdomain perpustakaan-febilina.api-admin-archillery-revi.com
+    }
+
+    member perpustakaan-febriadi.api-admin-archillery-revi.com {
+        vhdomain perpustakaan-febriadi.api-admin-archillery-revi.com
+    }
+
+    member perpustakaan-hendra.api-admin-archillery-revi.com {
+        vhdomain perpustakaan-hendra.api-admin-archillery-revi.com
+    }
+
+    member perpustakaan-roza.api-admin-archillery-revi.com {
+        vhdomain perpustakaan-roza.api-admin-archillery-revi.com
+    }
+
+    member persediaan-desy.api-admin-archillery-revi.com {
+        vhdomain persediaan-desy.api-admin-archillery-revi.com
+    }
+
+    member persediaan-sj.api-admin-archillery-revi.com {
+        vhdomain persediaan-sj.api-admin-archillery-revi.com
+    }
+
+    member psbb-yoga.api-admin-archillery-revi.com {
+        vhdomain psbb-yoga.api-admin-archillery-revi.com
+    }
+
+    member riwayat-kunjungan-pasien-rivaldy.api-admin-archillery-revi.com {
+        vhdomain riwayat-kunjungan-pasien-rivaldy.api-admin-archillery-revi.com
+    }
+
+    member sistem-informasi-sekolah-riza.api-admin-archillery-revi.com {
+        vhdomain sistem-informasi-sekolah-riza.api-admin-archillery-revi.com
+    }
+
+    member spk-perumahan-david.api-admin-archillery-revi.com {
+        vhdomain spk-perumahan-david.api-admin-archillery-revi.com
+    }
+
+    member toko-kelontong-maria.api-admin-archillery-revi.com {
+        vhdomain toko-kelontong-maria.api-admin-archillery-revi.com
+    }
+
+    member reservasi-dan-travel-zaky.api-admin-archillery-revi.com {
+        vhdomain reservasi-dan-travel-zaky.api-admin-archillery-revi.com
+    }
+
+    member reservasi-dan-travel-skytravelink.api-admin-archillery-revi.com {
+        vhdomain reservasi-dan-travel-skytravelink.api-admin-archillery-revi.com
+    }
+
+    member kepegawaian-ziqin.api-admin-archillery-revi.com {
+        vhdomain kepegawaian-ziqin.api-admin-archillery-revi.com
+    }
+
+    member spk-blt-covid-muhammad-ridho.api-admin-archillery-revi.com {
+        vhdomain spk-blt-covid-muhammad-ridho.api-admin-archillery-revi.com
+    }
+
+    member barbershop-iam.api-admin-archillery-revi.com {
+        vhdomain barbershop-iam.api-admin-archillery-revi.com
+    }
+
+    member pemesanan-kos-kosan-galuh.api-admin-archillery-revi.com {
+        vhdomain pemesanan-kos-kosan-galuh.api-admin-archillery-revi.com
+    }
+
+    member spk-profile-matching-nurina.api-admin-archillery-revi.com {
+        vhdomain spk-profile-matching-nurina.api-admin-archillery-revi.com
+    }
+
+    member spp-sekolah-nisa.api-admin-archillery-revi.com {
+        vhdomain spp-sekolah-nisa.api-admin-archillery-revi.com
+    }
+
+    member pemesanan-cafe-ardana.api-admin-archillery-revi.com {
+        vhdomain pemesanan-cafe-ardana.api-admin-archillery-revi.com
+    }
+
+    member pengarsipan-surat-fikri.api-admin-archillery-revi.com {
+        vhdomain pengarsipan-surat-fikri.api-admin-archillery-revi.com
+    }
+
+    member pemesanan-advertising-alfatah.api-admin-archillery-revi.com {
+        vhdomain pemesanan-advertising-alfatah.api-admin-archillery-revi.com
+    }
+
+    member spk-transportasi-annisa.api-admin-archillery-revi.com {
+        vhdomain spk-transportasi-annisa.api-admin-archillery-revi.com
+    }
+
+    member spk-guru-teladan-anggi.api-admin-archillery-revi.com {
+        vhdomain spk-guru-teladan-anggi.api-admin-archillery-revi.com
+    }
+
+    member pengiriman-paket-yandi.api-admin-archillery-revi.com {
+        vhdomain pengiriman-paket-yandi.api-admin-archillery-revi.com
+    }
+
+    member penggajian-muftar.api-admin-archillery-revi.com {
+        vhdomain penggajian-muftar.api-admin-archillery-revi.com
+    }
+
+    member penggajian-cut-mutia.api-admin-archillery-revi.com {
+        vhdomain penggajian-cut-mutia.api-admin-archillery-revi.com
+    }
+
+    member penjualan-perlengkapan-bayi-putri.api-admin-archillery-revi.com {
+        vhdomain penjualan-perlengkapan-bayi-putri.api-admin-archillery-revi.com
+    }
+
+    member pendataan-penduduk-tina.api-admin-archillery-revi.com {
+        vhdomain pendataan-penduduk-tina.api-admin-archillery-revi.com
+    }
+
+    member api-admin-faithaction-api.api-admin-archillery-revi.com {
+        vhdomain api-admin-faithaction-api.api-admin-archillery-revi.com
+    }
+
+    member api-admin-kelola-gideon.api-admin-archillery-revi.com {
+        vhdomain api-admin-kelola-gideon.api-admin-archillery-revi.com
+    }
+
+    member penjualan-bangunan-kholis.api-admin-archillery-revi.com {
+        vhdomain penjualan-bangunan-kholis.api-admin-archillery-revi.com
+    }
+
+    member bimble-bayu.api-admin-archillery-revi.com {
+        vhdomain bimble-bayu.api-admin-archillery-revi.com
+    }
+
+    member spk-ahp-beasiswa-as.api-admin-archillery-revi.com {
+        vhdomain spk-ahp-beasiswa-as.api-admin-archillery-revi.com
+    }
+
+    member gis-pemancingan-rezil.api-admin-archillery-revi.com {
+        vhdomain gis-pemancingan-rezil.api-admin-archillery-revi.com
+    }
+
+    member api-admin-reaperscans-aldi.api-admin-archillery-revi.com {
+        vhdomain api-admin-reaperscans-aldi.api-admin-archillery-revi.com
+    }
+
+    member api-admin-archillery-revi.api-admin-archillery-revi.com {
+        vhdomain api-admin-archillery-revi.api-admin-archillery-revi.com
+    }
+
+    member pemesanan-badminton-rajum.api-admin-archillery-revi.com {
+        vhdomain pemesanan-badminton-rajum.api-admin-archillery-revi.com
+    }
+
+    member www.api-admin-archillery-revi.com {
+        vhdomain www.api-admin-archillery-revi.com
+    }
+
+    member localhost {
+        vhdomain localhost, *
+    }
+}

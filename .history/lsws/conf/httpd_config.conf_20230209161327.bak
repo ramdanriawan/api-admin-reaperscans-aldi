@@ -255,6 +255,7 @@ vhTemplate docker {
   listeners               HTTP, HTTPS
   note                    docker
 
+
   member localhost {
     vhDomain              localhost, *
   }
