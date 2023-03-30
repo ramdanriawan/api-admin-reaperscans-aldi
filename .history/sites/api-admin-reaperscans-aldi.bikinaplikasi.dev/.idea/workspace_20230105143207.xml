@@ -204,22 +204,23 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/bikinaplikasi/project/setup_server_default/sites/api-admin-shinigami-aldi.bikinaplikasi.dev/app/Models&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/bikinaplikasi/project/setup_server_default/sites/api-admin-reaperscans-aldi.bikinaplikasi.dev/app/Models&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\bikinaplikasi\project\setup_server_default\sites\api-admin-shinigami-aldi.bikinaplikasi.dev\app\Models" />
-      <recent name="D:\bikinaplikasi\project\setup_server_default\sites\api-admin-shinigami-aldi.bikinaplikasi.dev\app\Models" />
-      <recent name="D:\bikinaplikasi\project\setup_server_default\sites\api-admin-shinigami-aldi.bikinaplikasi.dev\app\Http\Controllers\Api" />
+      <recent name="D:\bikinaplikasi\project\setup_server_default\sites\api-admin-reaperscans-aldi.bikinaplikasi.dev\app\Models" />
+      <recent name="D:\bikinaplikasi\project\setup_server_default\sites\api-admin-reaperscans-aldi.bikinaplikasi.dev\app\Http\Controllers\Api" />
       <recent name="D:\bikinaplikasi\project\setup_server_default\sites\api-admin-faithaction-api.bikinaplikasi.dev\ramdan" />
       <recent name="D:\bikinaplikasi\project\setup_server_default\sites\api-admin-faithaction-api.bikinaplikasi.dev\resources\views" />
+      <recent name="D:\bikinaplikasi\project\setup_server_default\sites\api-admin-faithaction-api.bikinaplikasi.dev\app\Http\Controllers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\bikinaplikasi\project\setup_server_default\sites\api-admin-faithaction-api.bikinaplikasi.dev\ramdan" />
@@ -326,10 +327,10 @@
       <workItem from="1671915248388" duration="10890000" />
       <workItem from="1671986416170" duration="1016000" />
       <workItem from="1672017373345" duration="14301000" />
-      <workItem from="1672270714754" duration="10035000" />
-      <workItem from="1672370522856" duration="30139000" />
-      <workItem from="1672616627531" duration="1272000" />
-      <workItem from="1672843313927" duration="693000" />
+      <workItem from="1672267653646" duration="4450000" />
+      <workItem from="1672616754172" duration="9372000" />
+      <workItem from="1672843305374" duration="682000" />
+      <workItem from="1672903894287" duration="32000" />
     </task>
     <servers />
   </component>

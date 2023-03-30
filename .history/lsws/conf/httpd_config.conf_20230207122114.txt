@@ -477,8 +477,8 @@ vhtemplate docker {
         vhdomain gis-pemancingan-rezil.api-admin-archillery-revi.com
     }
 
-    member api-admin-reaperscans-aldi.api-admin-archillery-revi.com {
-        vhdomain api-admin-reaperscans-aldi.api-admin-archillery-revi.com
+    member api-admin-shinigami-aldi.api-admin-archillery-revi.com {
+        vhdomain api-admin-shinigami-aldi.api-admin-archillery-revi.com
     }
 
     member api-admin-archillery-revi.api-admin-archillery-revi.com {

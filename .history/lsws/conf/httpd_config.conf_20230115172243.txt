@@ -477,12 +477,12 @@ vhtemplate docker {
         vhdomain gis-pemancingan-rezil.bikinaplikasi.dev
     }
 
-    member api-admin-reaperscans-aldi.bikinaplikasi.dev {
-        vhdomain api-admin-reaperscans-aldi.bikinaplikasi.dev
+    member api-admin-shinigami-aldi.bikinaplikasi.dev {
+        vhdomain api-admin-shinigami-aldi.bikinaplikasi.dev
     }
 
-    member api-admin-reaperscans-aldi.bikinaplikasi.dev {
-        vhdomain api-admin-reaperscans-aldi.bikinaplikasi.dev
+    member api-admin-shinigami-aldi.bikinaplikasi.dev {
+        vhdomain api-admin-shinigami-aldi.bikinaplikasi.dev
     }
 
     member pemesanan-badminton-rajum.bikinaplikasi.dev {

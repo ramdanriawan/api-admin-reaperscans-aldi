@@ -55,6 +55,6 @@
 #composer install --ignore-platform-reqs --working-dir=/app/bimble-bayu.bikinaplikasi.dev
 #composer install --ignore-platform-reqs --working-dir=/app/spk-ahp-beasiswa-as.bikinaplikasi.dev
 #composer install --ignore-platform-reqs --working-dir=/app/gis-pemancingan-rezil.bikinaplikasi.dev
-# composer install --ignore-platform-reqs --working-dir=/app/api-admin-reaperscans-aldi.bikinaplikasi.dev
+# composer install --ignore-platform-reqs --working-dir=/app/api-admin-shinigami-aldi.bikinaplikasi.dev
 # composer install --ignore-platform-reqs --working-dir=/app/pemesanan-badminton-rajum.bikinaplikasi.dev
 # composer install --ignore-platform-reqs --working-dir=/app/spk-roc-makanan-aldi.bikinaplikasi.dev
